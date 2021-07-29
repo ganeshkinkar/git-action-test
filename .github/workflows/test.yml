@@ -32,7 +32,7 @@ jobs:
           curl https://engine.anchore.io/docs/quickstart/docker-compose.yaml > docker-compose.yaml
           docker-compose version
           docker-compose up -d
-          docker-compose exec api anchore-cli system status
-          docker-compose exec api anchore-cli system feeds list
-          docker-compose exec api anchore-cli --u admin --p foobar evaluate check "test-ubuntu-image:latest"
+          # docker-compose exec api anchore-cli system status
+          # docker-compose exec api anchore-cli system feeds list
+          # docker-compose exec api anchore-cli --u admin --p foobar evaluate check "test-ubuntu-image:latest"
 
