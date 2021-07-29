@@ -26,7 +26,13 @@ jobs:
       - name: Build the docker image
         run: docker build . --file Dockerfile --tag test-ubuntu-image:latest
       - name: Scan image
-        uses: anchore/scan-action@v2
-        with:
-            image: "test-ubuntu-image:latest"
+        run: |
+          mkdir quickstart
+          cd quickstart
+          curl https://engine.anchore.io/docs/quickstart/docker-compose.yaml > docker-compose.yaml
+          docker-compose version
+          docker-compose up -d
+          docker-compose exec api anchore-cli system status
+          docker-compose exec api anchore-cli system feeds list
+          docker-compose exec api anchore-cli --u admin --p foobar evaluate check "test-ubuntu-image:latest"
 
