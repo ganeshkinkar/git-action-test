@@ -25,4 +25,8 @@ jobs:
       # Runs a single command using the runners shell
       - name: Build the docker image
         run: docker build . --file Dockerfile --tag test-ubuntu-image:latest
+      - name: Scan image
+        uses: anchore/scan-action@v2
+        with:
+            image: "test-ubuntu-image:latest"
 
